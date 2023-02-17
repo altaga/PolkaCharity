@@ -238,9 +238,11 @@ Usar un EC2 para los websockets, fue una forma rapida de hacer un chat que funci
 
     console.log("The WebSocket server is running on port 1883");
 
-[Complete Code](./WebSocketContainer/websocket/app/index.js)
+- [Complete Server Code](./WebSocketContainer/websocket/app/index.js)
 
-[Container for Deployment](./WebSocketContainer/)
+- [Complete WebDapp Code](./WebDApp/src/components/chat.js)
+
+- [Container for Deployment](./WebSocketContainer/)
 
 # References
 
