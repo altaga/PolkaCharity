@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  websocket:
+    build: ./websocket/
+    networks:
+      - my-net
+    ports:
+      - "1883:1883"
+
+  ngrox:
+    image: ngrok/ngrok:latest
+    entrypoint: ngrok http websocket:1883
+    networks:
+      - my-net
+    environment:
+      NGROK_AUTHTOKEN: XXXXXXXXXXXXXXXXXXXXXXXXXXX
+    depends_on:
+    - websocket
+
+networks:
+  my-net:
+    driver: bridge

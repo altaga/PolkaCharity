@@ -192,7 +192,56 @@ Code Snippet:
         .catch(error => console.log('error', error));
 
 [Complete Code](./WebDApp/src/pages/streamer.js)
- 
+
+## Pokt:
+
+<img src="https://i.ibb.co/KxrDm9L/image.png" >
+
+Pokt se utilizo principalmente para obtener un RPC privado para el proyecto, esto con el fin de poder evitar que las limitaciones del RPC publico de Moonbeam.
+
+<img src="https://i.ibb.co/Pmng1jm/image.png" >
+
+## EC2:
+
+<img src="https://i.ibb.co/k8zYq7X/image-4.png" >
+
+Usar un EC2 para los websockets, fue una forma rapida de hacer un chat que funcionara en tiempo real, ademas al ser un container es posible desplegarlo en casi cualquier otro proveedor, ya sea centralizado o decentralizado.
+
+    // Importing the required modules
+    const WebSocketServer = require('ws');
+
+    // Creating a new websocket server
+    const wss = new WebSocketServer.Server({ port: 1883 })
+
+    // Creating connection using websocket
+    wss.on("connection", ws => {
+        ws.on("message", data => {
+            if (data.toString() === "ping") {
+                ws.send("pong")
+            }
+            else {
+                wss.clients.forEach((client) => {
+                    client.send(`${data}`);
+                })
+            }
+        });
+
+        // handling what to do when clients disconnects from server
+        ws.on("close", () => {
+            console.log("the client has connected");
+        });
+        // handling client connection error
+        ws.onerror = function () {
+            console.log("Some Error occurred")
+        }
+    });
+
+    console.log("The WebSocket server is running on port 1883");
+
+[Complete Code](./WebSocketContainer/websocket/app/index.js)
+
+[Container for Deployment](./WebSocketContainer/)
+
 # References
 
 https://www.twitch.tv/creatorcamp/en/connect-and-engage/charity-streaming/
