@@ -30,16 +30,16 @@ PolkaCharity Description
 ## Tech we Use:
 
 - Polkadot Network:
-  - Utilizacion de PolkadotJS para mandar tokens desde las parachains compatibles con XCM directo a Moonbeam.
+  - Using PolkadotJS to send tokens from XCM compatible parachains directly to Moonbeam.
     - https://docs.moonbeam.network/builders/interoperability/xcm/xc20/xc20/
-  - Revision de los balances de cada token por network mediante la NodeJS Polkadot API.
+  - Review of the balances of each token per network using the NodeJS Polkadot API.
     - https://www.npmjs.com/package/@polkadot/api
 - Moonbeam Network:
-  - Utilizacion de la Metamask Wallet para hacer donaciones de Glimmer
+  - We use the Metamask Wallet to make Glimmer donations
     - https://docs.moonbeam.network/tokens/connect/metamask/
-  - Utilizacion de la libreria XCM para mandar y recibir Xtokens.
+  - Use of the XCM library to send and receive Xtokens.
     - https://www.npmjs.com/package/@moonbeam-network/xcm-sdk
-  - NFT Management, todos los NFT's que se den en la plataforma seran creados y mintados sobre la red de Moonbeam.
+  - NFT Management, all the NFT's that occur on the platform will be created and minted on the Moonbeam network.
     - ERC721 Token [0xc2b0889F8171C1F5B6f11f76f7C25d6bBb830b5d](https://moonbeam.moonscan.io/token/0xc2b0889f8171c1f5b6f11f76f7c25d6bbb830b5d?a=0xf55285649c3413f57b95c49fbad71f0e5646fa14)
 - Covalent:
   - Obtaining the account's GLMR and Xtokens (ERC20 Interface) Balances.
@@ -54,7 +54,7 @@ PolkaCharity Description
     - Obtaining the last record of each streamer if he is offline.
 - EC2:
   - Public Chat:
-    - Para hacer el chat publico se utilizo un WebSocketSecure instalado en una maquina virtual de EC2 en AWS.
+    - To make the chat public, a Secure WebSocket installed in an EC2 virtual machine on AWS is used.
 
 # How it's built:
 
@@ -62,11 +62,11 @@ PolkaCharity Description
 
 <img src="https://i.ibb.co/NpGt6Br/image.png" width="300px">
 
-La red de Moonbeam se utilizo para todo el control de Sign-in del chat, gestion de Glimmer (Native Token) y todos los X-Tokens compatibles con XCM. Esto con el fin de poder recibir tokens de cualquiera de las parachain en el ecosistema de Polkadot.
+Moonbeam's network was used for all Chat Sign-in control, Glimmer (Native Token) management and all XCM-compatible X-Tokens. This in order to be able to receive tokens from any of the parachains in the Polkadot ecosystem.
 
 <img src="https://i.ibb.co/PmGp17t/image.png" >
 
-Para poder obtener los balances de cada uno de los X-Tokens en la red de Moonbeam se utilizo la interfaz ECR20 del siguiente contrato, este es el contrato estandard de ERC20 para cualquier EVM, todo esto controlado por la libreria [Ethers.js](https://docs.ethers.org/v5/).
+In order to obtain the balances of each of the X-Tokens in the Moonbeam network, the ECR20 interface of the following contract was used, this is the standard ERC20 contract for any EVM, all controlled by the library [Ethers.js](https://docs.ethers.org/v5/).
 
     async getBalanceToken(address, tokenAddress) {
             return new Promise(async (resolve, reject) => {
@@ -79,19 +79,19 @@ Para poder obtener los balances de cada uno de los X-Tokens en la red de Moonbea
 
 [Complete Code](./WebDApp/src/components/summary.js)
 
-Dentro de nuestra plataforma tenemos un summary donde podemos ver todas las donaciones en tiempo real.
+Within our platform we have a summary where we can see all the donations in real time.
 
 <img src="https://i.ibb.co/HrQbbsk/image.png">
 
-A su vez todos los NFT's que desplegamos en la plataforma y que son el modo de premiar a los usuarios que donaron dinero en cada red, estan sobre la red de Moonbeam Mainnet en el siguiente contrato.
+In turn, all the NFT's that we deploy on the platform and that are the way to reward users who donated money in each network, are on the Moonbeam Mainnet network in the following contract.
 
 [Moonbeam Explorer](https://moonbeam.moonscan.io/token/0xc2b0889f8171c1f5b6f11f76f7c25d6bbb830b5d?a=0xf55285649c3413f57b95c49fbad71f0e5646fa14)
 
-El codigo de Solidity que se uso para ellos es el siguiente.
+The Solidity code that was used for them is the following.
 
 [NFT Code](./Contracts/NFT.sol)
 
-Los trofeos que entregamos se ven en la plataforma de la siguiente forma.
+The trophies that we deliver are seen on the platform as follows.
 
 <img src="https://i.ibb.co/PjGpqf3/image.png">
 
@@ -99,9 +99,9 @@ Los trofeos que entregamos se ven en la plataforma de la siguiente forma.
 
 <img src="https://i.ibb.co/qnt8Wtd/image.png" width="300px">
 
-Gracias a utilizar el [XCM-SDK](https://docs.moonbeam.network/builders/interoperability/xcm/xcm-sdk/xcm-sdk/) de Polkadot podemos realizar de forma sencilla las tranasferencias desde cualquiera de las parachains que tienen un contrato de X-Token desplegado en ellas.
+Through Polkadot's [XCM-SDK](https://docs.moonbeam.network/builders/interoperability/xcm/xcm-sdk/xcm-sdk/) we can easily make transfers from any of the parachains that have an X-Token contract deployed on them.
 
-- Para la fecha de hoy 02/17/23 las parachains mainnet compatibles con esta libreria son las siguientes.
+- As of today 02/17/23, the mainnet parachains compatible with this library are the following.
 
   - Bifrost BNC <img src="./Images/tokenLogos/bnc.png" height="16px">
   - Acala ACA <img src="./Images/tokenLogos/acala.png" height="16px">
@@ -115,7 +115,7 @@ Gracias a utilizar el [XCM-SDK](https://docs.moonbeam.network/builders/interoper
   - Polkadot DOT <img src="./Images/tokenLogos/dot.png" height="16px">
   - Statemint USDT <img src="./Images/tokenLogos/usdt.png" height="16px">
 
-Todas ellas son compatibles con las donaciones y es posible mandarlas mediante la Wallet Polkadot.js combinado con la libreria [@polkadot/extension-dapp](https://www.npmjs.com/package/@polkadot/extension-dapp)
+All of them are compatible with donations and it is possible to send them through the Polkadot.js Wallet combined with the library [@polkadot/extension-dapp](https://www.npmjs.com/package/@polkadot/extension-dapp)
 
 <img src="https://i.ibb.co/Rc0JrVk/vlcsnap-2023-02-17-00h18m05s133.png" width="300px">
 
@@ -197,7 +197,7 @@ Code Snippet:
 
 <img src="https://i.ibb.co/KxrDm9L/image.png" >
 
-Pokt se utilizo principalmente para obtener un RPC privado para el proyecto, esto con el fin de poder evitar que las limitaciones del RPC publico de Moonbeam.
+Pokt was mainly used to get a private RPC for the project, in order to get around the limitations of Moonbeam's public RPC.
 
 <img src="https://i.ibb.co/Pmng1jm/image.png" >
 
@@ -205,7 +205,7 @@ Pokt se utilizo principalmente para obtener un RPC privado para el proyecto, est
 
 <img src="https://i.ibb.co/k8zYq7X/image-4.png" >
 
-Usar un EC2 para los websockets, fue una forma rapida de hacer un chat que funcionara en tiempo real, ademas al ser un container es posible desplegarlo en casi cualquier otro proveedor, ya sea centralizado o decentralizado.
+Using EC2 for websockets was a quick way to make a chat that worked in real time, also being a container it is possible to deploy it in almost any other provider, whether centralized or decentralized.
 
     // Importing the required modules
     const WebSocketServer = require('ws');
