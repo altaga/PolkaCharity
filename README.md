@@ -14,7 +14,9 @@ PolkaCharity Description
 
 ## URL: https://www.polkacharity.site/
 
-# Setup
+<hr/>
+
+## Requirements
 
 - Use Moonbeam Mainnet on Metamask Wallet!
   - Get it on Metamask: https://metamask.io/
