@@ -12,7 +12,7 @@ PolkaCharity Description
 
 # Test the product:
 
-## URL: https://www.polkacharity.site/
+URL: https://www.polkacharity.site/
 
 <hr/>
 
