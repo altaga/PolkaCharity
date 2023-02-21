@@ -9,7 +9,7 @@ PolkaCharity is a Polkadot and moonbeam based decentralized streaming platform w
 
 # Watch our demo video:
 
-[![Demo](https://i.ibb.co/j3DCtPZ/image.png)](Pending)
+[![Demo](https://i.ibb.co/j3DCtPZ/image.png)](https://youtu.be/li1N9G9Z42U)
 
 # Test the product:
 
